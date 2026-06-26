@@ -1,0 +1,52 @@
+1. Introduction
+
+The Animal Identification Game is an educational game developed using Python. The application displays an animal image and provides multiple options for identification.
+
+2. Objectives
+Learn GUI development using Tkinter.
+Understand image handling.
+Implement scoring logic.
+Improve Python programming skills.
+3. Software Requirements
+Python 3.x
+Pillow Library
+Tkinter
+4. Modules Used
+Tkinter
+
+Used for creating graphical user interface.
+
+Pillow (PIL)
+
+Used for loading and displaying images.
+
+Random
+
+Used for selecting random animals.
+
+5. System Design
+
+Input:
+
+User selects an animal name.
+
+Process:
+
+Compare selected answer with correct answer.
+
+Output:
+
+Display result.
+Update score.
+6. Advantages
+Easy to use.
+Interactive learning.
+Improves animal recognition.
+7. Future Scope
+Add sound effects.
+Add timer.
+Store high scores.
+Add hundreds of animals.
+8. Conclusion
+
+The Animal Identification Game successfully demonstrates the use of Python GUI programming, image handling, event-driven programming, and scoring systems.
