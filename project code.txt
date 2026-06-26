@@ -1,0 +1,115 @@
+from tkinter import *
+from tkinter import messagebox
+from PIL import Image, ImageTk
+import random
+
+animals = [
+    {
+        "image": "images/lion.png",
+        "answer": "Lion",
+        "options": ["Lion", "Tiger", "Elephant", "Monkey"]
+    },
+    {
+        "image": "images/elephant.png",
+        "answer": "Elephant",
+        "options": ["Tiger", "Elephant", "Lion", "Monkey"]
+    },
+    {
+        "image": "images/tiger.png",
+        "answer": "Tiger",
+        "options": ["Monkey", "Lion", "Tiger", "Elephant"]
+    },
+    {
+        "image": "images/monkey.png",
+        "answer": "Monkey",
+        "options": ["Monkey", "Tiger", "Lion", "Elephant"]
+    }
+]
+
+score = 0
+current = None
+
+def load_question():
+    global current
+
+    current = random.choice(animals)
+
+    img = Image.open(current["image"])
+    img = img.resize((250, 250))
+    photo = ImageTk.PhotoImage(img)
+
+    image_label.config(image=photo)
+    image_label.image = photo
+
+    options = current["options"]
+
+    btn1.config(text=options[0])
+    btn2.config(text=options[1])
+    btn3.config(text=options[2])
+    btn4.config(text=options[3])
+
+def check_answer(selected):
+    global score
+
+    if selected == current["answer"]:
+        score += 1
+        messagebox.showinfo("Correct!", "Correct Answer!")
+    else:
+        messagebox.showerror(
+            "Wrong!",
+            f"Correct Answer: {current['answer']}"
+        )
+
+    score_label.config(text=f"Score: {score}")
+    load_question()
+
+root = Tk()
+root.title("Animal Identification Game")
+root.geometry("500x500")
+
+title = Label(
+    root,
+    text="Animal Identification Game",
+    font=("Arial", 16, "bold")
+)
+title.pack(pady=10)
+
+image_label = Label(root)
+image_label.pack()
+
+btn1 = Button(root, width=20,
+              command=lambda:
+              check_answer(btn1["text"]))
+btn1.pack(pady=5)
+
+btn2 = Button(root, width=20,
+              command=lambda:
+              check_answer(btn2["text"]))
+btn2.pack(pady=5)
+
+btn3 = Button(root, width=20,
+              command=lambda:
+              check_answer(btn3["text"]))
+btn3.pack(pady=5)
+
+btn4 = Button(root, width=20,
+              command=lambda:
+              check_answer(btn4["text"]))
+btn4.pack(pady=5)
+
+score_label = Label(
+    root,
+    text="Score: 0",
+    font=("Arial", 12)
+)
+score_label.pack(pady=10)
+
+load_question()
+
+root.mainloop()
+
+
+
+
+
+
